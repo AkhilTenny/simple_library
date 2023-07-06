@@ -25,9 +25,15 @@ body{
 
 }.for-list{
   
-  background-color: rgb(18, 25, 56);
-
-  width: 85%;
-  border-radius: 20px;
   
+}.for-add-btn button{
+
+  border: 0 ;
+  padding: 7px  ;
+  border-radius:20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(131, 190, 42);
+
+}.for-add-btn button:hover{
+  background-color: rgb(155, 225, 50);;
 }
