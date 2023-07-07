@@ -33,6 +33,7 @@ body{
   border-radius:20px;
   font-family: 'Roboto', sans-serif;
   background-color: rgb(131, 190, 42);
+  cursor: pointer;
 
 }.for-add-btn button:hover{
   background-color: rgb(155, 225, 50);;
