@@ -1,4 +1,4 @@
-var domObjects = [];
+var Library =[] ;
 var readStatus = true;
 var notReadStatus = true; 
 const $add = document.querySelector(".add-btn");
@@ -18,6 +18,7 @@ const $btnSubmit = document.querySelector('.input-submit-button').addEventListen
   && $pageNo.value != ''){ checkReadStatus();
     checkReadStatus()
     makingObject();
+    render();
     
    }else{
     alert('plz enter somthing there')
@@ -26,7 +27,6 @@ const $btnSubmit = document.querySelector('.input-submit-button').addEventListen
   
 })
  
-
 $modal.style.display = 'none';
 $add.addEventListener('click', openAddBookModal);
 
@@ -37,15 +37,12 @@ function openAddBookModal(){
   $modal.style.display = 'none';
 }
 
-
 function checkReadStatus(){
   if($notreadStatus.checked){
     readStatus = false;
   }else if($readStatus.checked){
     notReadStatus = false;
-    
-  }
-}
+  }}
 
 function BookConstructor(title,author,pageNo,readStatus,notReadStatus){
   this.title = title;
@@ -57,11 +54,9 @@ function BookConstructor(title,author,pageNo,readStatus,notReadStatus){
  
 function makingObject(){
   var newBook = new BookConstructor($title.value, $author.value, $pageNo.value ,readStatus,notReadStatus)
-  console.log(`title${newBook.title}`);
-  console.log(`author${newBook.author}`);
-  console.log(`page${newBook.pageNo}`);
-  console.log(`read status${newBook.readStatus}`);
-  console.log(`not read status${newBook.notReadStatus}`);
-  
+  Library.push(newBook);
+}
 
+function render(){
+  
 }
