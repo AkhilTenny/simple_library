@@ -44,6 +44,7 @@ body{
   border-radius:20px;
   position: fixed;
   top: 50%;
+  transition: 2s ease-in-out;
   left: 50%;
   transform: translate(-50%,-35%);
   width: 300px;
