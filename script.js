@@ -1,4 +1,4 @@
-var Library =[] ;
+var library =[] ;
 var readStatus = true;
 var notReadStatus = true; 
 const $add = document.querySelector(".add-btn");
@@ -19,6 +19,7 @@ const $btnSubmit = document.querySelector('.input-submit-button').addEventListen
     checkReadStatus()
     makingObject();
     render();
+    closeAddBookModal()
     
    }else{
     alert('plz enter somthing there')
@@ -54,9 +55,16 @@ function BookConstructor(title,author,pageNo,readStatus,notReadStatus){
  
 function makingObject(){
   var newBook = new BookConstructor($title.value, $author.value, $pageNo.value ,readStatus,notReadStatus)
-  Library.push(newBook);
+  library.push(newBook);
 }
 
 function render(){
-  
+  var domElement = [];
+  library.forEach(book => 
+    domElement = `
+    <div><h3>${book.title}</h3></div>
+    <div><h3>${book.author}</h3></div>
+    <div><h3>${book.pageNo}</h3></div>
+    `)
+    document.querySelector(".for-only-dom").innerHTML= domElement;
 }
