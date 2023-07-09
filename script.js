@@ -20,7 +20,9 @@ const $btnSubmit = document.querySelector('.input-submit-button').addEventListen
     makingObject();
     render();
     closeAddBookModal()
-    
+    $title.value = ''
+    $author.value = '' 
+    $pageNo.value = ''
    }else{
     alert('plz enter somthing there')
    }
@@ -60,11 +62,17 @@ function makingObject(){
 
 function render(){
   var domElement = [];
-  library.forEach(book => 
-    domElement = `
+  library.forEach(book => {
+    domElement += `
     <div><h3>${book.title}</h3></div>
     <div><h3>${book.author}</h3></div>
     <div><h3>${book.pageNo}</h3></div>
-    `)
+    `
+    console.log(book);
     document.querySelector(".for-only-dom").innerHTML= domElement;
+  }
+    )
+    
+
+    
 }
