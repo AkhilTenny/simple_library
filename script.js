@@ -1,28 +1,29 @@
 var library =[] ;
-var readStatus = true;
-var notReadStatus = true; 
 const $add = document.querySelector(".add-btn");
 const $modal = document.querySelector('.for-modal');
 const $title = document.querySelector('#book-title');
 const $author = document.querySelector('#book-author');
 const $pageNo = document.querySelector("#book-pages");
 const $notreadStatus = document.querySelector('#book-Notread-status');
-const $readStatus = document.querySelector('#book-read-status');
+const $readStatus = document.querySelector('#book-Read-status');
+
 
 const $btnSubmit = document.querySelector('.input-submit-button').addEventListener('click',e => {
+  
   
   e.preventDefault();
   if(($notreadStatus.checked || $readStatus.checked )  
   && $title.value != '' 
   && $author.value != '' 
-  && $pageNo.value != ''){ checkReadStatus();
-    checkReadStatus()
-    makingObject();
+  && $pageNo.value != ''){ 
+    
+    
+    makingObject(checkStatus());
     render();
     closeAddBookModal()
-    $title.value = ''
-    $author.value = '' 
-    $pageNo.value = ''
+    $title.value = '';
+    $author.value = ''; 
+    $pageNo.value = '';
    }else{
     alert('plz enter somthing there')
    }
@@ -40,36 +41,47 @@ function openAddBookModal(){
   $modal.style.display = 'none';
 }
 
-function checkReadStatus(){
+function checkStatus(){
   if($notreadStatus.checked){
-    readStatus = false;
-  }else if($readStatus.checked){
-    notReadStatus = false;
-  }}
+    return "Not Read";
+  }else{
+    return "Read";
+  }
+}
 
-function BookConstructor(title,author,pageNo,readStatus,notReadStatus){
+
+
+function BookConstructor(title,author,pageNo,readValue){
   this.title = title;
   this.author = author;
   this.pageNo = pageNo;
-  this.readStatus = readStatus;
-  this.notReadStatus = notReadStatus;
+  if(readValue == "Read"){
+    this.readValue = "Read";
+  }else{
+    this.readValue = "Not Read";
+  } 
 }
+
  
-function makingObject(){
-  var newBook = new BookConstructor($title.value, $author.value, $pageNo.value ,readStatus,notReadStatus)
+function makingObject(readValue){
+  let newBook = new BookConstructor($title.value, $author.value, $pageNo.value,readValue)
   library.push(newBook);
+  console.log(library)
+  
 }
 
 function render(){
   var domElement = [];
   library.forEach(book => {
     domElement += `
-    <div><h3>${book.title}</h3></div>
-    <div><h3>${book.author}</h3></div>
-    <div><h3>${book.pageNo}</h3></div>
-    `
-    console.log(book);
-    document.querySelector(".for-only-dom").innerHTML= domElement;
+    <div class='for-listing'>
+      <div class="listing-div-tile"><h3 class="listing-text-tile" >${book.title}</h3></div>
+      <div class="listing-div-author"><h3 class="listing-text-author">${book.author}</h3></div>
+      <div class="listing-div-pages"><h3 class="listing-text-pages">${book.pageNo}</h3></div>
+      <div><button id="infoStatusButton";">${book.readValue}</button> </div>
+    </div>
+    `;
+     document.querySelector(".for-only-dom").innerHTML= domElement;
   }
     )
     
