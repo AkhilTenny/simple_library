@@ -8,8 +8,10 @@ const $notreadStatus = document.querySelector('#book-Notread-status');
 const $readStatus = document.querySelector('#book-Read-status');
 
 
-const $btnSubmit = document.querySelector('.input-submit-button').addEventListener('click',e => {
-  
+
+
+const $btnSubmit = document.querySelector('.input-submit-button')
+  $btnSubmit.addEventListener('click',e => {
   
   e.preventDefault();
   if(($notreadStatus.checked || $readStatus.checked )  
@@ -20,7 +22,17 @@ const $btnSubmit = document.querySelector('.input-submit-button').addEventListen
     
     makingObject(checkStatus());
     render();
-    closeAddBookModal()
+    closeAddBookModal();
+    const $InfoStatusButton = document.querySelectorAll(".InfoStatusButton");
+    
+    $InfoStatusButton.forEach(function(button){
+      const currentElement = button.parentElement.parentElement.childNodes[1].childNodes[0].innerHTML;
+      
+      button.addEventListener("click", function(){
+        findBook(currentElement)
+      })
+    })
+
     $title.value = '';
     $author.value = ''; 
     $pageNo.value = '';
@@ -43,7 +55,7 @@ function openAddBookModal(){
 
 function checkStatus(){
   if($notreadStatus.checked){
-    return "Not Read";
+    return "Not Read";"ellam set ayi chetta"
   }else{
     return "Read";
   }
@@ -66,11 +78,13 @@ function BookConstructor(title,author,pageNo,readValue){
 function makingObject(readValue){
   let newBook = new BookConstructor($title.value, $author.value, $pageNo.value,readValue)
   library.push(newBook);
-  console.log(library)
+  
+ 
   
 }
 
 function render(){
+  
   var domElement = [];
   library.forEach(book => {
     domElement += `
@@ -78,13 +92,24 @@ function render(){
       <div class="listing-div-tile"><h3 class="listing-text-tile" >${book.title}</h3></div>
       <div class="listing-div-author"><h3 class="listing-text-author">${book.author}</h3></div>
       <div class="listing-div-pages"><h3 class="listing-text-pages">${book.pageNo}</h3></div>
-      <div><button id="infoStatusButton";">${book.readValue}</button> </div>
+      <div><button class="InfoStatusButton">${book.readValue}</button> </div>
     </div>
     `;
      document.querySelector(".for-only-dom").innerHTML= domElement;
+    
   }
     )
-    
+   
 
     
-}
+}function findBook(currentElement){
+  library.forEach(function(element){
+    if(element.title == currentElement){
+  if(element.readValue == "Read"){
+    element.readValue = "Not Read";
+  }else{
+    element.readValue = "Read";
+  }}render();
+  
+  })
+  }
