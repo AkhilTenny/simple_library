@@ -6,12 +6,11 @@ const $author = document.querySelector('#book-author');
 const $pageNo = document.querySelector("#book-pages");
 const $notreadStatus = document.querySelector('#book-Notread-status');
 const $readStatus = document.querySelector('#book-Read-status');
-
-
-
-
 const $btnSubmit = document.querySelector('.input-submit-button')
-  $btnSubmit.addEventListener('click',e => {
+startProgram();  
+function startProgram(){
+
+$btnSubmit.addEventListener('click',e => {
   
   e.preventDefault();
   if(($notreadStatus.checked || $readStatus.checked )  
@@ -41,7 +40,7 @@ const $btnSubmit = document.querySelector('.input-submit-button')
    }
   
   
-})
+})}
  
 $modal.style.display = 'none';
 $add.addEventListener('click', openAddBookModal);
@@ -100,7 +99,7 @@ function render(){
   }
     )
    
-
+    
     
 }function findBook(currentElement){
   library.forEach(function(element){
@@ -109,7 +108,12 @@ function render(){
     element.readValue = "Not Read";
   }else{
     element.readValue = "Read";
-  }}render();
+  }}
+  
   
   })
+  console.log('ni jekki');
+  render();
+  startProgram();
+  
   }
