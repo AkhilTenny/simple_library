@@ -5,9 +5,10 @@ body{
   color: white;
   box-sizing: border-box;
   overflow-x: hidden;
-  over
+  
 }
 .background{
+  min-height: 100vh;
   height: 100%;
   width: 100vw;
   background-color: #111827;
@@ -150,4 +151,12 @@ body{
 .info-status-button:hover{
   
   background-color: rgb(78, 65, 65);
+}
+
+.InfoDeleteButton{
+  color: white;
+  background-color: rgb(38, 44, 50);
+  border: 1px solid rgba(2, 2, 67, 0.241);
+  border-radius: 50px ;
+  margin-left: 5px;
 }
